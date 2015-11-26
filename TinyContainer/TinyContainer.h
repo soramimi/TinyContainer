@@ -894,6 +894,9 @@ namespace tiny {
 	template <typename T> T const *zerostring();
 	template <> inline char const *zerostring<char>() { return ""; }
 
+	template <typename T> size_t strlength(T const *p);
+	template <> size_t strlength(char const *p) { return strlen(p); }
+
 	template <typename T> class t_stringbuffer {
 	private:
 		struct fragment_t {
@@ -1068,7 +1071,7 @@ namespace tiny {
 		}
 		void print(T const *ptr)
 		{
-			print(ptr, std::char_traits<T>::length(ptr));
+			print(ptr, strlength(ptr));
 		}
 		void print(T const &t)
 		{
