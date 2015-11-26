@@ -851,6 +851,7 @@ namespace tiny {
 				if (!first || !last) {
 					first = last = 0;
 				}
+				count--;
 				delete it.node;
 			}
 		}
@@ -879,9 +880,11 @@ namespace tiny {
 					node->prev = prev;
 					last = node;
 				}
+				count++;
 				return iterator(node);
 			} else {
 				first = last = new node_t(v);
+				count = 1;
 				return iterator(first);
 			}
 		}

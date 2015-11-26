@@ -1,28 +1,32 @@
 
 #include <new>
 #include <stdio.h>
-#include <vector>
+#include <list>
 
 #include "TinyContainer/TinyContainer.h"
 
-void print(tiny::vector<int> const *vec)
+void print(tiny::list<int> const *list)
 {
-	for (tiny::vector<int>::const_iterator it = vec->begin(); it != vec->end(); it++) {
+	for (tiny::list<int>::const_iterator it = list->begin(); it != list->end(); it++) {
 		printf("%d\n", *it);
 	}
 }
 
 int main(int argc, char **argv)
 {
-	tiny::vector<int> vec;
-	vec.push_back(0);
-	vec.push_back(1);
-	vec.push_back(2);
-	vec.push_back(3);
-	vec.push_back(4);
-	vec.push_back(5);
+	tiny::list<int> list;
+	list.push_back(0);
+	list.push_back(1);
+	list.push_back(2);
+	list.push_back(3);
+	list.push_back(4);
+	list.push_back(5);
 
-	print(&vec);
+	list.clear();
+
+	print(&list);
+
+	size_t n = list.size();
 
 	return 0;
 }
